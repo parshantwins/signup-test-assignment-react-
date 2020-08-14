@@ -39,7 +39,6 @@ const isAuthenticated = () => {
 };
 
 const storeAuthUser = (data, remember) => {
-  debugger;
   localStorage.setItem(LOCALSTORAGE_AUTH_USER, JSON.stringify(data));
   localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, data.Data.token);
 

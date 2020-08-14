@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { getApiUrl } from "../config/api.config";
 import { errorMessages } from "../config/messages.config";
 
@@ -36,7 +35,6 @@ axios.interceptors.response.use(
     
     if (response) {
       const { status, data } = response;
-      debugger;
       const { errors } = data;
       // place your reentry code
       if (status === 401) {

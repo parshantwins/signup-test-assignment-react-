@@ -15,6 +15,7 @@ export default class Register extends Component {
                 email: "",
                 password: "",
                 confirmPassword: '',
+                emailVerified: false,
                 loading: false,
                 alertMessage: "",
                 submitted: false,
@@ -39,18 +40,28 @@ export default class Register extends Component {
             return true;
         });
         ValidatorForm.addValidationRule('emailRegistered', async (value) => {
+            const { signupform } = this.state;
+            let valid = true;
             var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-            if (value.trim() !== "" && expr.test(value)) {
-                return await this.verifyEmail(value);
+            if (!signupform.emailVerified && value.trim() !== "" && expr.test(value)) {
+                valid = await this.verifyEmail(value);
             }
-            return true;
+
+            this.setState({ signupform: { ...signupform, emailVerified: valid } });
+            return valid;
         });
     }
 
     handleChange = (e) => {
         const { signupform } = this.state;
-        signupform[e.target.name] = e.target.value;
-        this.setState({ signupform });
+        const { name } = e.target;
+        signupform[name] = e.target.value;
+
+        if (name == "email") {
+            this.setState({ signupform: { ...signupform, emailVerified: false } });
+        } else {
+            this.setState({ signupform });
+        }
     }
 
     verifyEmail = async (email) => {
@@ -61,11 +72,10 @@ export default class Register extends Component {
             }
         }
 
-        try
-        {
+        try {
             const response = await apiService.post('VERIFYEMAIL', requestPayload);
             return response.data.status == "OK";
-        } catch(error) {
+        } catch (error) {
             return false;
         }
     }
@@ -75,7 +85,6 @@ export default class Register extends Component {
     }
 
     handleSubmit = (e) => {
-        debugger;
         e.preventDefault();
         const { signupform } = this.state;
         this.setState({ signupform: { ...this.state.signupform, loading: true } });
@@ -89,24 +98,21 @@ export default class Register extends Component {
             }
         }
 
-        apiService.post('SIGNUP', requestPayload)
-        .then(response => {
-            debugger;
-            if (response.Status) {
-                this.setState({ signupform: { ...this.state.signupform, messageType: "success", loading: false, email: "", password: "", confirmPassword: "", alertMessage: response.Message } });
+        apiService.post('SIGNUP', requestPayload).then(response => {
+            if (response.data) {
+                this.setState({ signupform: { ...this.state.signupform, messageType: "success", loading: false, email: "", password: "", confirmPassword: "", alertMessage: response.message } });
             } else {
                 this.setState({ signupform: { ...this.state.signupform, messageType: "danger", loading: false, alertMessage: response.message } });
             }
-        }, error =>{ 
-                debugger;
-                this.setState(prevState => {
+        }, error => {
+            this.setState(prevState => {
                 this.setState({ signupform: { ...this.state.signupform, messageType: "danger", loading: false, alertMessage: error } });
             })
         }
         );
-}
+    }
 
-    
+
 
     render() {
         const { signupform } = this.state;
@@ -162,7 +168,7 @@ export default class Register extends Component {
                                                         name="email"
                                                         type="text"
                                                         validators={['required', 'isEmail', 'emailRegistered']}
-                                                        errorMessages={['Email is Required.', 'Email is not valid', 'Email is already registered, please choose another email.']}
+                                                        errorMessages={['Email is Required.', 'Email is not valid', 'Email is already registered.']}
                                                         value={signupform.email}
                                                         className="form-control"
                                                         placeholder="Email"

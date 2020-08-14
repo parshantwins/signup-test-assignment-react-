@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 const DenyReasonModal = ({ show, onClose, onSubmit, rejectionReasonType, rejectionReason, onChange }) => {
-    debugger;
     return (
         <Modal show={show} onHide={onClose} >
             <Modal.Body>
