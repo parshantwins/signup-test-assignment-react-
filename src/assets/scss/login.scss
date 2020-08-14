@@ -1,0 +1,125 @@
+/* Scss Document */
+body {
+  background-color: #fafafa;
+}
+#main {
+ 
+}
+.commonImage{
+  background-color: #fafafa;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom left;
+  background-attachment: fixed;
+  height: 100vh;
+}
+.mb-15 {
+  margin-bottom: 15px !important;
+}
+.login {
+  position: relative;
+  padding: 30px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .loginSlider {
+    position: relative;
+    .owl-nav {
+      display: none;
+    }
+    .owl-dots {
+      display: none;
+    }
+  }
+  .logo {
+    text-align: center;
+    width: 120px;
+    margin: 20px auto;
+    img {
+      max-width: 100%;
+    }
+  }
+  .loginFormInner {
+    background-color: #fff;
+    // border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media(max-width:767px){
+      padding: 10px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0 20px 0;
+      font-size: 18px;
+      color: #193370;
+      font-weight: bold;
+    }
+    input {
+      background-color: #eee;
+    }
+    select {
+      background-color: #eee;
+    }
+    .form-control {
+      position: relative;
+      line-height: 16px;
+      &::placeholder {
+        font-size: 12px;
+        line-height: 14px;
+      }
+      &::focus {
+        box-shadow: none !important;
+      }
+    }
+    .moreOption {
+      text-align: center;
+      position: relative;
+      text-transform: uppercase;
+      color: #999;
+      font-size: 15px;
+      &::before {
+        content: "";
+        background-color: #ddd;
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        left: 0;
+        transform: translateY(-50%);
+        z-index: 99;
+      }
+      &::after {
+        content: "";
+        background-color: #ddd;
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 99;
+      }
+    }
+    .btn.btn-google {
+      font-size: 13px;
+      img {
+        width: 18px;
+        margin-right: 10px;
+      }
+    }
+    a {
+      font-size: 14px;
+      line-height: 14px;
+      margin-top: 12px;
+      text-align: center;
+      color: #003569;
+    }
+  }
+}

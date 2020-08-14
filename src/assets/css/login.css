@@ -1,0 +1,191 @@
+/* Scss Document */
+body {
+  background-color: #fafafa;
+}
+
+#main {
+  background-color: #fafafa;
+}
+
+.login {
+  position: relative;
+  padding: 30px 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.loginSection {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+}
+.login .loginSlider {
+  position: relative;
+}
+.login .loginSlider .owl-nav {
+  display: none;
+}
+.login .loginSlider .owl-dots {
+  display: none;
+}
+.login .logo {
+  text-align: center;
+  width: 120px;
+  margin: 20px auto 40px;
+}
+.reminderField {
+  text-align: center;
+}
+.login .logo img {
+  max-width: 100%;
+}
+.login .loginFormInner {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  border-radius: 4px;
+  margin: 0 0 10px;
+  padding: 25px 40px;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.login .loginFormInner h1 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 18px;
+  color: #193370;
+  font-weight: bold;
+  font-weight: bold;
+}
+.login .loginFormInner input {
+  background-color: #fafafa;
+}
+
+.login .loginFormInner .form-control {
+  position: relative;
+  line-height: 16px;
+  font-size: 17px;
+}
+.login .loginFormInner button.form-control {
+  background-color: #193370;
+  border-color: #193370;
+  font-size: 17px;
+}
+.login .loginFormInner button.form-control:hover {
+  background-color: #217cb0;
+  border-color: #217cb0;
+}
+.login .loginFormInner button.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  color: #fff;
+}
+.login .loginFormInner .form-control::placeholder {
+  font-size: 12px;
+  line-height: 14px;
+}
+.login .loginFormInner .form-control::focus {
+  box-shadow: none !important;
+}
+.login .loginFormInner .moreOption {
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  color: #999;
+  font-size: 15px;
+}
+.login .loginFormInner .moreOption::before {
+  content: "";
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+.login .loginFormInner .moreOption::after {
+  content: "";
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+.login .loginFormInner .btn.btn-google {
+  font-size: 17px;
+  font-weight: 600;
+}
+.login .loginFormInner .btn-google {
+  color: #193370;
+  background-color: #ffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+}
+
+.login .loginFormInner a {
+  font-size: 14px;
+  line-height: 14px;
+  margin-top: 12px;
+  text-align: center;
+  color: #003569;
+}
+.login .loginFormInner a:hover {
+  color: #2c35c0;
+  text-decoration: none;
+}
+
+.login .loginFormInner .form-group {
+  position: relative;
+  margin-bottom: 26px;
+}
+.error {
+  position: absolute;
+  font-size: 12px;
+  color: #f00;
+  padding-top: 2px;
+}
+.loginField input.form-control,
+.loginField select.form-control {
+  padding-left: 40px;
+}
+.form-group.loginField:before {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: #ddd;
+  left: 32px;
+  z-index: 9;
+}
+.loginField i.fa {
+  color: #ccc;
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+}
+
+@media (max-width: 575px) {
+  .login .loginFormInner {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  #main {
+    background-color: #fff;
+  }
+
+  .login .loginFormInner {
+    padding: 0;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
